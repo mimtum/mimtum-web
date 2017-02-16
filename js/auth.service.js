@@ -1,8 +1,8 @@
 angular.module("app.auth")
 
 .service('authService', ['$http', function($http){
-        //this.url = "http://api.mimtum.com/v1/api-token-auth/";        
-        this.url = "http://192.168.0.100:8000/v1/api-token-auth/";
+        this.url = "http://api.mimtum.com/v1/api-token-auth/";        
+        //this.url = "http://192.168.0.100:8000/v1/api-token-auth/";
         this.login = function (user, success, error) {
             var self = this;
             $http.post(this.url, user).then(function(res){

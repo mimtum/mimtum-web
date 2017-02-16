@@ -2,7 +2,8 @@ angular.module("app.classroom")
 .controller('classroomCtrl', ['$scope', 'classroomService', 'authService', '$rootScope', '$timeout', 
  function($scope, classroomService, authService, $rootScope, $timeout) {
 
-  var MAX_DISTANCE = 500000;
+  //var MAX_DISTANCE = 500000;
+  var MAX_DISTANCE = 50;
   var map, data;
   var markers = [];
 
