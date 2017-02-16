@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html ng-app="app"><!--ng-app indica que dentro de este html esta corriendo una aplicacion angular-->
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title>MimTum</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+	<link rel="stylesheet" href="node_modules/materialize-css/dist/css/materialize.min.css">
+  <link rel="stylesheet" href="css/app.css" type="text/css" media="all" />
+</head>
+<body ng-controller="classroomCtrl">
+	<header id="header" class="">
+		 <nav class="nav-wrapper">
+		    <div ng-controller="authCtrl" class="nav-wrapper">
+		      <a href="index.html" class="brand-logo center">
+		      	<img class="responsive-img" src="img/logo.jpg" style="height: 55px">
+		      </a>
+		       <a href="#" data-activates="mobile-demo" class="button-collapse"><i class="material-icons color">menu</i></a>
+		      <ul id="nav-mobile" class="right hide-on-med-and-down">
+		       
+		        <li ng-show="!token.loggedIn"><a class="background waves-effect waves-light btn" href="#modal1">INICIAR SESIÓN</a></li>
+		        
+		        <div ng-show="token.loggedIn" ng-cloak>
+		        
+		        	 <div ng-show="bloqueado">
+		        	 <li><a ng-click="logout()" class="background waves-effect waves-light btn" href="#">CERRAR SESIÓN</a></li>
+		        	 	<li><a ng-click="block(false)" class="background waves-effect waves-light btn">Desbloquear aula</a></li>
+		        	 </div>
+		        	 <div ng-show="!bloqueado">
+		        	 <li><a ng-click="logout()" class="background waves-effect waves-light btn" href="#">CERRAR SESIÓN</a></li>
+		        	 	<li><a ng-click="block(true)" class="background waves-effect waves-light btn">Bloquear aula</a></li>
+		        	 </div>
+		        	 
+		        </div>
+		       
+		      </ul>
+		      <ul class="side-nav" id="mobile-demo" ng-cloak>
+		         <li ng-show="!token.loggedIn"><a class=" background waves-effect waves-light btn" href="#modal1">INICIAR SESIÓN</a></li>
+		         <div  ng-show="token.loggedIn">
+		        	 <li><a ng-click="logout()" class="background waves-effect waves-light btn" href="#">CERRAR SESIÓN</a></li>
+		        	<div ng-show="bloqueado">
+		        	 	<li><a ng-click="block(false)" class="background waves-effect waves-light btn">Desbloquear aula</a></li>
+		        	 </div>
+		        	 <div ng-show="!bloqueado">
+		        	 	<li><a ng-click="block(true)" class="background waves-effect waves-light btn">Bloquear aula</a></li>
+		        	 </div>
+		        </div>
+		        
+		      </ul>
+		    </div>
+		  </nav>
+
+	</header><!-- /header -->
+  <article class="margin-top-xl">
+
+  		<div ng-controller="authCtrl">
+  			 <!-- Modal login struct -->
+		  <div id="modal1" class="modal">
+		    <div class="modal-content">
+		      <h4 class="center color">INICIAR SESIÓN</h4>
+
+		      <form ng-submit="login()">
+		      	
+		      	<div class="row">
+		        <div class="input-field col s8  offset-s2">
+		          <input ng-model="user.username" id="codigo" type="text" class="validate" required>
+		          <label for="disabled">Código</label>
+		        </div>
+		      </div>
+		      <div class="row">
+		        <div class="input-field col s8 offset-s2">
+		          <input ng-model="user.password" id="password" type="password" class="validate" required>
+		          <label for="disabled">Contraseña</label>
+		          <p style="color: red">{{error}}</p>
+		        </div>
+		      </div>
+
+		      <div class="row center">
+		        <button class="btn center background" type="submit">Enviar</button>
+		      </div>
+		      	
+		      </form>
+		      
+		    </div>
+		  </div>
+  		</div>
+		<div class="container">
+			<div class="row">
+				<div class="col s12">
+					<div id="map"></div>
+				</div>
+			</div>
+		</div>
+  </article>
+	
+	<footer class="centered">
+    Powered by MimTum &copy;	
+	</footer>
+
+  <script type="text/javascript" src="node_modules/jquery/dist/jquery.min.js"></script>	
+  <script src="node_modules/materialize-css/dist/js/materialize.min.js" type="text/javascript"></script>
+	<script type="text/javascript" src="http://maps.google.com/maps/api/js?&libraries=geometry&key=AIzaSyC0vhsF-TM-SDjJ3dvM0euMVT_G66sAP8s"></script>
+	<script src="node_modules/angular/angular.min.js"></script>
+	<script src="js/ngStorage.js"></script>
+	<script src="js/app.js"></script>
+	<script src="js/auth.service.js"></script>
+	<script src="js/auth.controller.js"></script>
+	<script src="js/classroom.service.js"></script>
+	<script src="js/classroom.controller.js"></script>
+
+	<script>
+		$(document).ready(function(){
+		    // the "href" attribute of .modal-trigger must specify the modal ID that wants to be triggered
+			 $('.modal').modal();
+			 $('#button').click(function(){
+			 		console.log('boton ok');
+				});
+			});  
+
+		$(".button-collapse").sideNav();
+	</script>
+</body>
+</html>
+

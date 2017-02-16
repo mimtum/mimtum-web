@@ -1,0 +1,10 @@
+{
+  "name": "mimtum-web",
+  "version": "0.0.1",
+  "description": "Angular application for mimtum",
+  "author": "Mimtum Team",
+  "dependencies": {
+    "angular": "^1.6.2",
+    "materialize-css": "^0.98.0"
+  }
+}
